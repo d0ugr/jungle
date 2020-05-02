@@ -5,6 +5,7 @@
   </header>
 
   <% if enhanced_cart.any? %>
+
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -32,27 +33,30 @@
         </tfoot>
       </table>
     </div>
-  <% else %>
-    <div class="panel panel-default">
-      Ain't no nothin here.
-    </div>
-  <% end %>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= form_tag orders_path do %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-amount="<%= cart_subtotal_cents %>"
+            data-name="Jungle"
+            data-description="Khurram Virani's Jungle Order"
+            data-locale="auto"
+            data-email="kvirani@gmail.com"
+            data-currency="cad">
+          </script>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+  <% else %>
+
+    <div class="alert alert-info" role="alert">
+      You have nothing in your cart.  <a href="/" class="alert-link">Click here</a> to go shopping!
+    </div>
+
+  <% end %>
 
 </section>
