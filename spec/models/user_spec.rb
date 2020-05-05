@@ -49,18 +49,44 @@ RSpec.describe User, type: :model do
     end
 
     it "invalid with mismatch passwords" do
+      subject.password = "password"
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
     it "invalid with short password" do
+      subject.password = "12"
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Password is too short (minimum is 3 characters)")
     end
 
+    it "invalid with existing email" do
+      user = User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      )
+      user.save
+      subject.save
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Email has already been taken")
+    end
+
     it "invalid with existing case insensitive email" do
-      expect(user).to be_invalid
-      expect(user.errors.full_messages).to include("Email has already been taken")
+      user = User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "TEST@TEST.COM",
+        password:              "secret",
+        password_confirmation: "secret"
+      )
+      user.save
+      expect(user).to be_valid
+      subject.save
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Email has already been taken")
     end
 
   end
