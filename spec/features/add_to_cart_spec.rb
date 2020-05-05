@@ -16,7 +16,7 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     end
   end
 
-  scenario "Users can navigate to the product detail page by clicking on a product" do
+  scenario "Users can add a product to their cart and the page shows this" do
 
     visit root_path
     page.all(".product button")[0].click
