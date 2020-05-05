@@ -93,16 +93,47 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
 
-    it "return nil with invalid email" do
+    it "return nil with nil email and password" do
+      expect(User.authenticate_with_credentials(nil, nil)).to eq(nil)
     end
 
-    it "return nil with valid email and invalid password" do
+    it "return nil with invalid email and nil password" do
+      expect(User.authenticate_with_credentials("nope@nope.nope", nil)).to eq(nil)
+    end
+
+    it "return nil with valid email and nil password" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      expect(User.authenticate_with_credentials("test@test.com", nil)).to eq(nil)
     end
 
     it "return a user with valid email and password" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      user = User.authenticate_with_credentials("test@test.com", "secret")
+      expect(user.email).to eq("test@test.com")
     end
 
     it "return a user with valid email and password case insensitive" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      user = User.authenticate_with_credentials("TEST@TEST.COM", "secret")
+      expect(user.email).to eq("test@test.com")
     end
 
   end
