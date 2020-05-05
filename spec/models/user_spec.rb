@@ -91,4 +91,20 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '.authenticate_with_credentials' do
+
+    it "return nil with invalid email" do
+    end
+
+    it "return nil with valid email and invalid password" do
+    end
+
+    it "return a user with valid email and password" do
+    end
+
+    it "return a user with valid email and password case insensitive" do
+    end
+
+  end
+
 end
