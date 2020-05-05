@@ -12,9 +12,12 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     )
   end
 
-  scenario "Users can log in" do
+  scenario "Users can navigate to the login page and log in" do
 
     visit login_path
+    within "nav" do
+      expect(page).to_not have_content("Signed in as")
+    end
     fill_in "email",    with: @user.email
     fill_in "password", with: @user.password
     click_button "Log in"
