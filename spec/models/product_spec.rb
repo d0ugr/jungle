@@ -1,58 +1,45 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Product, type: :model do
 
-  describe 'Validations' do
+  test_category = Category.new(name: "Product test category")
+  subject do
+    described_class.new(
+      name:        "Product test name",
+      price_cents: 123,
+      quantity:    999999,
+      category:    test_category
+    )
+  end
 
-    it 'name is required' do
-      @category = Category.new(name: "Stuff")
-      @product = Product.new(
-        name:     nil,
-        price:    4.20,
-        quantity: 1000000,
-        category: @category
-      )
-      @product.save
-      expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include("Name can't be blank")
+  describe "Validations" do
+
+    it "valid with valid values" do
+      expect(subject).to be_valid
     end
 
-    it 'price is required' do
-      @category = Category.new(name: "Stuff")
-      @product = Product.new(
-        name:     "HUMAN FEET SHOES",
-        price:    nil,
-        quantity: 1000000,
-        category: @category
-      )
-      @product.save
-      expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include("Price can't be blank")
+    it "name is required" do
+      subject.name = nil
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Name can't be blank")
     end
 
-    it 'quantity is required' do
-      @category = Category.new(name: "Stuff")
-      @product = Product.new(
-        name:     "HUMAN FEET SHOES",
-        price:    4.20,
-        quantity: nil,
-        category: @category
-      )
-      expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include("Quantity can't be blank")
+    it "price is required" do
+      subject.price_cents = nil
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Price can't be blank")
     end
 
-    it 'category is required' do
-      @category = Category.new(name: "Stuff")
-      @product = Product.new(
-        name:     "HUMAN FEET SHOES",
-        price:    4.20,
-        quantity: 1000000,
-        category: nil
-      )
-      @product.save
-      expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include("Category can't be blank")
+    it "quantity is required" do
+      subject.quantity = nil
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Quantity can't be blank")
+    end
+
+    it "category is required" do
+      subject.category = nil
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Category can't be blank")
     end
 
   end
