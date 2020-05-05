@@ -55,9 +55,9 @@ RSpec.describe User, type: :model do
     end
 
     it "invalid with short password" do
-      subject.password = "12"
+      subject.password = "p"
       expect(subject).to be_invalid
-      expect(subject.errors.full_messages).to include("Password is too short (minimum is 3 characters)")
+      expect(subject.errors.full_messages.any? { |error| error.include?("Password is too short") }).to be(true)
     end
 
     it "invalid with existing email" do
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
       expect(subject.errors.full_messages).to include("Email has already been taken")
     end
 
-    it "invalid with existing case insensitive email" do
+    it "invalid with existing email case insensitive" do
       user = User.new(
         first_name:            "Test",
         last_name:             "User",
