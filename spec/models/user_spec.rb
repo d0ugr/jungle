@@ -19,26 +19,31 @@ RSpec.describe User, type: :model do
     end
 
     it "invalid with missing first name" do
+      subject.first_name = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("First name can't be blank")
     end
 
     it "invalid with missing last name" do
+      subject.last_name = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Last name can't be blank")
     end
 
     it "invalid with missing email" do
+      subject.email = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Email can't be blank")
     end
 
     it "invalid with missing password" do
+      subject.password = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Password can't be blank")
     end
 
     it "invalid with missing password confirmation" do
+      subject.password_confirmation = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Password confirmation can't be blank")
     end
