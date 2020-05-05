@@ -14,29 +14,29 @@ RSpec.describe Product, type: :model do
 
   describe "Validations" do
 
-    it "valid with valid values" do
+    it "valid with valid attributes" do
       expect(subject).to be_valid
     end
 
-    it "name is required" do
+    it "invalid with missing name" do
       subject.name = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Name can't be blank")
     end
 
-    it "price is required" do
+    it "invalid with missing price" do
       subject.price_cents = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Price can't be blank")
     end
 
-    it "quantity is required" do
+    it "invalid with missing quantity" do
       subject.quantity = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Quantity can't be blank")
     end
 
-    it "category is required" do
+    it "invalid with missing category" do
       subject.category = nil
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include("Category can't be blank")

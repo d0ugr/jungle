@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
 
   describe "Validations" do
 
-    it "valid with valid values" do
+    it "valid with valid attributes" do
       expect(subject).to be_valid
     end
 
