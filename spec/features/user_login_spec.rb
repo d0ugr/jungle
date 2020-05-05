@@ -18,7 +18,9 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     fill_in "email",    with: @user.email
     fill_in "password", with: @user.password
     click_button "Log in"
-    save_screenshot
+    within "nav" do
+      expect(page).to have_content("Signed in as #{@user.first_name}")
+    end
 
   end
 
