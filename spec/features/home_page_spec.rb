@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
 
@@ -8,6 +8,7 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
 
     # DEBUG / VERIFY
     save_screenshot
+    expect(page).to have_css "article.product"
   end
 
 end
