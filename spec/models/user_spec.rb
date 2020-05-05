@@ -136,6 +136,42 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq("test@test.com")
     end
 
+    it "return a user with valid email and password case insensitive with leading spaces" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      user = User.authenticate_with_credentials("   TEST@TEST.COM", "secret")
+      expect(user.email).to eq("test@test.com")
+    end
+
+    it "return a user with valid email and password case insensitive with trailing spaces" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      user = User.authenticate_with_credentials("TEST@TEST.COM   ", "secret")
+      expect(user.email).to eq("test@test.com")
+    end
+
+    it "return a user with valid email and password case insensitive with leading and trailing spaces" do
+      User.new(
+        first_name:            "Test",
+        last_name:             "User",
+        email:                 "test@test.com",
+        password:              "secret",
+        password_confirmation: "secret"
+      ).save
+      user = User.authenticate_with_credentials("   TEST@TEST.COM   ", "secret")
+      expect(user.email).to eq("test@test.com")
+    end
+
   end
 
 end
