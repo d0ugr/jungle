@@ -4,7 +4,8 @@ RSpec.describe User, type: :model do
 
   subject do
     described_class.new(
-      name:                  "Test User",
+      first_name:            "Test",
+      last_name:             "User",
       email:                 "test@test.com",
       password:              "secret",
       password_confirmation: "secret"
@@ -18,27 +19,43 @@ RSpec.describe User, type: :model do
     end
 
     it "invalid with missing first name" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("First name can't be blank")
     end
 
     it "invalid with missing last name" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Last name can't be blank")
     end
 
     it "invalid with missing email" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Email can't be blank")
     end
 
     it "invalid with missing password" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Password can't be blank")
     end
 
     it "invalid with missing password confirmation" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Password confirmation can't be blank")
     end
 
     it "invalid with mismatch passwords" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
     it "invalid with short password" do
+      expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include("Password is too short (minimum is 3 characters)")
     end
 
     it "invalid with existing case insensitive email" do
+      expect(user).to be_invalid
+      expect(user.errors.full_messages).to include("Email has already been taken")
     end
 
   end
