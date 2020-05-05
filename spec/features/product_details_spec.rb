@@ -19,7 +19,11 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   scenario "Users can navigate to the product detail page by clicking on a product" do
 
     visit root_path
-    page.all(".product a")[0].click
+    page.all(".product header a")[0].click
+    expect(page).to have_css ".products-show"
+
+    visit root_path
+    page.all(".product footer a")[0].click
     expect(page).to have_css ".products-show"
 
   end
