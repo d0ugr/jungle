@@ -1,5 +1,7 @@
 # Jungle
 
+__Lighthouse Labs Web Development Bootcamp Project 4__
+
 Jungle is a mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.  This project simulated being dropped into an existing codebase with unfamiliar languages and frameworks and have us modify it with new features and bug fixes.  Automated testing using RSpec was also added.
 
 Technologies used include [Ruby/Rails](https://rubyonrails.org/), [Postgres](https://postgresql.org), [Bootstrap](https://getbootstrap.com/), [RSpec](https://rspec.info/), and [Capybara](https://github.com/teamcapybara/capybara) for development and testing.
@@ -146,13 +148,13 @@ Create `.env` by copying `.env.example` and modify the Stripe keys to match the 
 To start the server normally use:
 
 ```sh
-bin/rails s
+bin/rails server
 ```
 
 If running under a Vagrant virtual machine use:
 
 ```sh
-bin/rails s -b 0.0.0.0
+bin/rails server -b 0.0.0.0
 ```
 
 ## **Testing**
