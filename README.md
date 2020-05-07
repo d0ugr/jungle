@@ -88,13 +88,13 @@ Do not edit or push to repo:
 
 ### **Dependencies**
 
-Jungle requires [Ruby/Rails 4.2](https://rubyonrails.org/) and [Postgres 9.x](https://www.postgresql.org/) and the following Ruby gems are used:
+Jungle requires [Ruby/Rails 4.2](https://rubyonrails.org/) and [Postgres 9.x](https://www.postgresql.org/).
 
 See `Gemfile` for gem dependencies.
 
 ### **Support Setup**
 
-Install Ruby/Rails from your [package manager](https://nodejs.org/en/download/package-manager/), or [download](https://nodejs.org/en/download/) binaries (for fun) or source code (for maximum fun).
+Install [Ruby/Rails 4.2](https://rubyonrails.org/).
 
 Install [Postgres](https://www.postgresql.org).
 
@@ -165,7 +165,7 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ### **Model Testing**
 
-To run all automated RSpec model tests ()
+To run all automated RSpec model tests.  `--format documentation` provides a more readable output when running this on the command line.
 
 ```sh
 bin/rspec [--format documentation]
