@@ -24,17 +24,15 @@ default: &default
 development:
   <<: *default
   database: jungle_development
-  # username: development
-  # password: development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: jungle
+  username: jungle_development
 
   # The password associated with the postgres role (username).
-  #password:
+  password: development
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
