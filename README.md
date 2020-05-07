@@ -2,7 +2,7 @@
 
 Jungle is a mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.  This project simulated being dropped into an existing codebase with unfamiliar languages and frameworks and have us modify it with new features and bug fixes.  Automated testing using RSpec was also added.
 
-Technologies used include [Ruby/Rails](https://rubyonrails.org/), [Postgres](https://postgresql.org), [Bootstrap](https://getbootstrap.com/) [RSpec](https://rspec.info/), and [Capybara](https://github.com/teamcapybara/capybara) for development and testing.
+Technologies used include [Ruby/Rails](https://rubyonrails.org/), [Postgres](https://postgresql.org), [Bootstrap](https://getbootstrap.com/), [RSpec](https://rspec.info/), and [Capybara](https://github.com/teamcapybara/capybara) for development and testing.
 
 The app features and fixes I implemented on this project are as follows:
 
@@ -12,6 +12,7 @@ The app features and fixes I implemented on this project are as follows:
 - Enhancement: Order Details Page - Add order details to the order confirmation page.
 - Bug: Missing Admin Security - Add authentication for administrators.
 - Bug: Checking Out with Empty Cart - Show notice that cart is empty instead of an empty cart.
+- Bug: Inconsistent Money Display - Dollar amounts updated to use humanized display across the app.
 
 For development I added all the RSpec model and feature testing.
 
@@ -65,15 +66,15 @@ The project directory is arranged as follows:
 ./app               Main application source directory
 ./app/assets        Static assets (JS, CSS, images, etc)
 ./app/controllers   MVC controllers
-./app/helpers
-./app/mailers
+./app/helpers       Helper classes (currently not used)
+./app/mailers       ActionMailer classes (currently not used)
 ./app/models        MVC models
-./app/uploaders
+./app/uploaders     CarrierWave uploader classes (currently not used)
 ./app/views         MVC ERB views
 ./config            Rails app configuration files
-./db
+./db                Database files
 ./docs              Project documentation
-./lib
+./lib               Extended modules (currently not used)
 ./log               Log files for each environment
 ./public            Static files served to the client, including manifest.json
 ./spec              Testing specifications
