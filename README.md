@@ -1,6 +1,6 @@
 # Jungle
 
-__Lighthouse Labs Web Development Bootcamp Project 4__
+_Lighthouse Labs Web Development Bootcamp Project 4_
 
 Jungle is a mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.  This project simulated being dropped into an existing codebase with unfamiliar languages and frameworks and have us modify it with new features and bug fixes.  Automated testing using RSpec was also added.
 
